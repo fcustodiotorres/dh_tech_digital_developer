@@ -27,9 +27,11 @@ function startMicro(option,timeSec){
   let time3 = standartTime * 3;
 
 resultado = 
-  timeSec >= time3 ? 'Kabummm' : timeSec >= time2 ? 'Comida Queimou' : timeSec < standartTime ? 'Tempo Insuficiente' : 'Prato pronto, bom apetite !!!'
+  timeSec >= time3 ? 'Kabummm'                  : 
+  timeSec >= time2 ? 'Comida Queimou'           : 
+  timeSec < standartTime ? 'Tempo Insuficiente' : 'Prato pronto, bom apetite !!!';
 
-console.log(resultado)
+console.log(resultado);
   }
 
 startMicro("Brigadeiro",15)

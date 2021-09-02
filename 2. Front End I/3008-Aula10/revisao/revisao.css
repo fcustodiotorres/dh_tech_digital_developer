@@ -1,0 +1,13 @@
+li{
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+#caixa{
+  background-color:blanchedalmond;
+  height: 300px;
+  width: 300px;
+  padding: 12px;
+  border: solid 3px aquamarine;
+  margin: 15px;
+}

@@ -1,0 +1,13 @@
+*{
+  margin: 0;
+}
+  
+  
+  
+#banner{
+  width: 100vw;
+  height: 45vh;
+  background-color: aqua;
+  background-image: url(image.jpg);
+  background-position: center;
+}

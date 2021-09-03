@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:ital@1&display=swap');
+
+* {
+  font-family: 'Comic Neue';
+}
+
+body {
+  margin: 0;
+  padding: 0;
+/*   background-image: url(/img/bg.jpg);
+  background-size: cover;
+  background-position: top;
+  background-attachment: fixed; */
+  background-color:#307060;
+}
+
+header, main {
+  width: 90%;
+  margin-left: 4%;
+  margin-top: 10px;
+  background-color: white;
+  padding: 15px; /* Padding adicionado em todos lados por layout */
+  border-radius: 1rem;
+  border: 1.2px solid grey;
+  box-sizing: border-box;
+  
+}
+
+h1{
+  padding: 0px;
+  margin-top: 3px;
+  text-align: center;
+  text-decoration: underline;
+}
+
+p{
+  text-align: justify;
+}
+
+#titulosite {
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 1.4rem;
+  color: black;
+  text-align: center;
+}
+
+#banner{
+  position: relative;
+  left: 12%;
+  background: url(/img/bg.jpg) left top repeat;
+  border-radius: 5px;
+  height: 200px;
+  background-repeat: no-repeat;
+  margin-bottom: 30px;
+
+}
+
+bolder{
+  font-weight: 600;
+}

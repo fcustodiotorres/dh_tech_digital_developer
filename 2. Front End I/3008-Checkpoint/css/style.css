@@ -7,33 +7,33 @@
 body {
   margin: 0;
   padding: 0;
-/*   background-image: url(/img/bg.jpg);
+  background-image: url(/img/bg.jpg);
   background-size: cover;
   background-position: top;
-  background-attachment: fixed; */
-  background-color:#307060;
+  background-attachment: fixed;
+  background-color: #07598c;
 }
 
-header, main {
+header,
+main {
   width: 90%;
   margin-left: 4%;
   margin-top: 10px;
   background-color: white;
   padding: 15px; /* Padding adicionado em todos lados por layout */
   border-radius: 1rem;
-  border: 1.2px solid grey;
+  border: 1.2px solid black;
   box-sizing: border-box;
-  
 }
 
-h1{
+h1 {
   padding: 0px;
   margin-top: 3px;
   text-align: center;
   text-decoration: underline;
 }
 
-p{
+p {
   text-align: justify;
 }
 
@@ -45,17 +45,35 @@ p{
   text-align: center;
 }
 
-#banner{
+#banner {
   position: relative;
-  left: 12%;
+  left: 21%;
   background: url(/img/bg.jpg) left top repeat;
   border-radius: 5px;
   height: 200px;
+  width: 100%;
   background-repeat: no-repeat;
   margin-bottom: 30px;
-
 }
 
-bolder{
+bolder {
   font-weight: 600;
+}
+
+#social_icons {
+  display: flex;
+  position: fixed;
+  bottom: 1%;
+  right: 1%;
+  height: 70px;
+  width: 130px;
+  box-sizing: border-box;
+  background-color: #07598c;
+}
+
+#social_icons img {
+  max-width: 70px;
+  max-height: 70px;
+  width: auto;
+  height: auto;
 }

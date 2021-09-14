@@ -1,6 +1,6 @@
 # Os pseudos seletores são divididos em:
-  ## Pseudo-Classes
-  ## Pseudo-Elementos
+  ## 1. Pseudo-Classes
+  ## 2. Pseudo-Elementos
 
 ### Pseudo - Classes:
 Utiliza um ":" para acessar.
@@ -13,12 +13,9 @@ Ex: seletor:hover{}
 ### Pseudo - Elementos:
 Utiliza dois ":" para acessar.
 Ex: seletor::pseudo-elemento{}
->> os mais utilizados são: ::bedore, ::after, ::first-letter e ::first-line
-
-#### before e after:
->> se usa junto com a propriedade content, faz com que o conteúdo apareceça no início/final do elemento.
+>> os mais utilizados são: ::before, ::after, ::first-letter e ::first-line
+>> before e after são usados junto com a propriedade content, faz com que o conteúdo apareceça no início/final do elemento.
 
 ## Esquema Geral da sintaxe CSS
 >> a ordem correta para inserir uma regra seria:
-selector #id .class :pseudoclasse ::pseudoelemento[atributo]{}<!--  -->
-}
+selector #id .class :pseudoclasse ::pseudoelemento[atributo]{}

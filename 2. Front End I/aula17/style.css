@@ -1,0 +1,61 @@
+body {
+  background-color: blanchedalmond;
+}
+
+img {
+  display: block;
+  height: 150px;
+  margin: 20px;
+}
+
+#bola {
+  position: relative;
+  animation: rolarDireita 3s infinite;
+}
+
+@keyframes rolarDireita {
+  0% {
+    transform: rotate(1);
+    opacity: 0%;
+    left: 0px;
+  }
+  25% {
+  }
+  50% {
+  }
+  75% {
+  }
+  100% {
+    transform: rotate(360deg) translateX(20px);
+    left: 350px;
+  }
+}
+
+#emoji:hover {
+  /* transform: rotate(20deg); */
+  /* transform: skew(15deg); */
+  transform: scale(1.2);
+  /*  transform: translateX(100px); */
+  transition: all 2s;
+  /* transition: transform 2s; */
+}
+
+button {
+  height: 50px;
+  width: 150px;
+  background-color: rgb(22, 76, 253);
+  color: white;
+  font-weight: 600;
+  box-shadow: 3px 2.5px rgb(174, 134, 226);
+}
+
+button:hover {
+  background-color: aquamarine;
+  color: rgb(22, 76, 253);
+  transition: all 0.5s;
+}
+
+button:active {
+  transform: scale(1.2);
+  background-color: yellow;
+}

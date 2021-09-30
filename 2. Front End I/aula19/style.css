@@ -1,0 +1,44 @@
+/* https://docs.google.com/presentation/d/1TdeMl0NsUCKPKkVnDTugBGjnR7IZGbJIEyxA3HwXAGA/edit#slide=id.gc865fa7758_0_886 */
+
+.menu {
+  display: flex;
+  list-style: none;
+  gap: 0px;
+  flex-direction: row;
+  /*   flex-direction: column; */
+  flex-wrap: nowrap;
+  justify-content: space-around; /* Alinha Horizontalmente */
+  align-items: center; /* Alinha Verticalmente */
+}
+
+ol,
+ul {
+  background-color: bisque;
+  height: 45px;
+}
+
+li {
+  text-align: center;
+  box-sizing: border-box;
+  width: 100px;
+  flex-grow: 1; /* Permite que o item ocupe todo o espaço disponível */
+
+}
+a{
+  text-decoration: none;
+  display: block;
+}
+
+li:hover {
+  background-color: white;
+  transition: all 0.3s;
+  animation: kf_scale 2s;
+  
+}
+
+@keyframes kf_scale {
+  0% { ;
+  }
+  100% {transform: scale(1.3)
+  }
+}

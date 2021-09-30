@@ -1,0 +1,63 @@
+<!-- Participantes: Filipe Custódio,  -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+  <h1>Lista de Espera</h1>
+
+  <form action="" method="GET">
+    <fieldset>
+      <legend>Dados pessoais:</legend>
+    <label for="name">Nome:</label>
+    <input type="text" name="name" id="name" placeholder="Filipe Custodio" maxlength="100" required>
+    <label for="email">Seu melhor E-mail:</label>
+    <input type="email" name="email" id="email" placeholder="exemplo@gmail.com" required>
+    <label for="tel">Contato:</label>
+    <input type="number" name="tel" id="tel" placeholder="55 11 999999999" required> 
+    <label for="nasc">Nascimento:</label>
+    <input type="date" name="nasc" id="nasc" class='display-flex'>
+    <div class="display-flex">
+    <input type="radio" name="idade" id="idade1" value="maior">
+    <label for="idade1">Sou maior de idade</label>
+    <input type="radio" name="idade" id="idade2" value="menor">
+    <label for="idade2">Sou menor de idade</label>
+  </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Preferências da Viagem:</legend>
+
+    <label for="pntselect">Quero Conhecer:</label>
+    <select name="pntselect" id="pntselect">
+      <optgroup label="Pontos Turísticos">
+      <option value="">Lagoa Céu Azul</option>
+      <option value="">Campo de Asteróide</option>
+      <option value="">Divisa da Terra</option>
+    </optgroup>
+    </select>
+    <label for="checkbox">Vou como:</label>
+    <div class='display-flex'>
+
+  <input type="checkbox" name="checkbox" id="check1">
+  <label for="check1">Turista</label>
+  <input type="checkbox" name="checkbox" id="check2">
+  <label for="check2">Residente</label>
+  <input type="checkbox" name="checkbox" id="check3">
+  <label for="check3">Estudante</label></div.display-flex>
+  </fieldset>
+  <div class='display-flex input-buttons'>
+  <input type="reset" value="Resetar">
+  <input type="submit" value="Enviar">
+  </form></div>
+  
+  </main>
+</body>
+</html>

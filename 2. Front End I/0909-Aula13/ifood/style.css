@@ -1,0 +1,41 @@
+body{
+  text-align: center;
+  background-color:brown;
+}
+
+main{
+  background-color: white;
+  border: solid black ;
+  border-radius: 10px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+#logo{
+  height: 100px;
+  border-radius: 50%;
+}
+
+h1{
+  margin: 2px auto 10px;
+  font-size: 1.2rem;
+  font-style: italic;
+}
+main{
+  width: 70%;
+  margin: 0px auto;
+}
+
+fieldset{
+  margin-bottom: 5px;
+}
+fieldset *{
+  box-sizing: border-box;
+  display: block;
+  margin: 0 auto;
+  width: 80%;
+}
+
+#fieldpagamento *{
+  display: inline;
+  width: auto;
+}

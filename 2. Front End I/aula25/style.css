@@ -1,0 +1,15 @@
+body{
+    background-color: aliceblue;
+
+}
+
+.row{
+    background-color: bisque;
+    height: 200px;
+}
+
+.col{
+    border-style: solid;
+    border-width: 5px;
+    border-color: black;
+}

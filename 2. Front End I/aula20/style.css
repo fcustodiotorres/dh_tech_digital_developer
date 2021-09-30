@@ -1,0 +1,55 @@
+*{
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* Body Container Grid */
+body{
+  display: grid;
+  grid-template-columns: 150px 1fr 150px;
+  grid-template-areas: 
+  'header header header'
+  'nav nav nav'
+  'aside main links'
+  'footer footer footer';
+}
+
+/* Itens Filhos do Container Grid */
+header{
+  background-color: salmon;
+  height: 15vh;
+  grid-area: header;
+}
+
+aside{
+  background-color: crimson;
+  grid-area: aside;
+}
+
+main{
+  background-color: deepskyblue;
+  grid-area: main;
+  height: 75vh;
+}
+
+footer{
+  background-color: lightpink;
+  grid-area: footer;
+}
+
+div{
+  background-color: lightgreen;
+  grid-area: links;
+}
+
+nav{
+  background-color: aquamarine;
+  grid-area: nav;
+}
+
+/*  */
+.center{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

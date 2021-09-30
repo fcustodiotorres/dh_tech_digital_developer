@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>iFood</title>
+  </head>
+
+  <body>
+    <main>
+      <img src="img/logo.jpg" alt="" id="logo" />
+      <h1>Pediu, chegou!</h1>
+      <form action="">
+        <fieldset id="fieldpessoais">
+          <legend>Dados pessoais:</legend>
+          <label for="name">Nome:</label>
+          <input
+            type="text"
+            name="name"
+            id="name"
+            placeholder="Filipe Custodio"
+          />
+          <label for="email">E-mail:</label>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            placeholder="Email@gmail.com"
+          />
+          <label for="endereco">Endereço:</label>
+          <textarea
+            name="endereco"
+            id="endereco"
+            cols="20"
+            rows="2"
+            placeholder="Rua Primeira, n 10 - São Paulo - SP"
+          ></textarea>
+        </fieldset>
+
+        <fieldset id="fieldpedido">
+          <legend>Dados do Pedido:</legend>
+          <label for="culinaria">Tipo Culinária:</label>
+          <select name="culinaria" id="colunaria">
+            <optgroup label="Lanches">
+              <option value="jap">X-TUDO</option>
+              <option value="jap">X-SALADA</option>
+              <option value="jap">X-BACON</option>
+            </optgroup>
+            <optgroup label="Refeições">
+              <option value="jap">Japonesa</option>
+              <option value="bah">Bahiana</option>
+              <option value="chu">Churrasco</option>
+            </optgroup>
+          </select>
+          <label for="qty">Quantidade:</label>
+          <input type="number" name="qty" id="qty" value="1" min="0" />
+          <label for="agenda">Data para Entrega:</label>
+          <input type="datetime-local" name="agenda" id="agenda" />
+        </fieldset>
+
+        <fieldset id="fieldpagamento">
+          <legend>Dados do Pagamento:</legend>
+          <!-- O atributo name dos radios precisam ser iguais -->
+          <input type="radio" name="pgto" id="cc" value="cc" />
+          <label for="cc">Cartão</label>
+          <input type="radio" name="pgto" id="pix" value="pix" checked />
+          <label for="pix">PIX</label>
+          <input type="radio" name="pgto" id="din" value="din" />
+          <label for="din">Dinheiro</label>
+        </fieldset>
+        <input type="reset" value="Resetar" />
+        <input type="submit" value="Enviar" />
+      </form>
+    </main>
+  </body>
+</html>

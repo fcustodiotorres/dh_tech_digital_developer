@@ -1,0 +1,22 @@
+body{
+    background-color:whitesmoke;
+}
+
+bolder{
+    font-weight: 900;
+    color: grey
+}
+
+
+@media (min-width: 600px){
+
+    .card{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .card-img-top{
+        width: 50vw;
+        background-color: grey;
+    }
+}

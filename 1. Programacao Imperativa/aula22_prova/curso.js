@@ -26,10 +26,12 @@ let curso = {
   },
   listaAprovados: () => {
     let tamanhoLista = curso.listaEstudantes.length;
+    let listaBoolean = []
     for(let i = 0 ; i < tamanhoLista ; i++){
       let alunoAtual = curso.listaEstudantes[i].nome;
-      this.resultadoaprovacao(alunoAtual)
-    }
+      listaBoolean.push(curso.resultadoaprovacao(alunoAtual))
+    };
+    console.log(listaBoolean)
   },
 };
 // Teste Adicionar Aluno
@@ -38,8 +40,7 @@ let curso = {
 //console.log(curso.listaEstudantes);
 
 // Teste Aprovação
-/* curso.resultadoaprovacao("Filipe Custódio");
- */
+//curso.resultadoaprovacao("Filipe Custódio");
 
 /* Teste arrayResultados */
 curso.listaAprovados()

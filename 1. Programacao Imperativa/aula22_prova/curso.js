@@ -24,13 +24,14 @@ let curso = {
     }
     return false;
   },
-  arrayResultados: () => {
-/*     for (let [nome, notas] of this.listaEstudantes) {
-        console.log(x) */
+  listaAprovados: () => {
+    let tamanhoLista = curso.listaEstudantes.length;
+    for(let i = 0 ; i < tamanhoLista ; i++){
+      let alunoAtual = curso.listaEstudantes[i].nome;
+      this.resultadoaprovacao(alunoAtual)
     }
   },
 };
-
 // Teste Adicionar Aluno
 //console.log(curso.listaEstudantes);
 // curso.adicionarAluno('Novo Aluno',3,[8,4,10]);
@@ -41,4 +42,4 @@ let curso = {
  */
 
 /* Teste arrayResultados */
-// console.log(curso.arrayResultados());
+curso.listaAprovados()

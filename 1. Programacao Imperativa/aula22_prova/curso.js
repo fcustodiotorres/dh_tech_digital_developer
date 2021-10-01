@@ -25,15 +25,15 @@ let curso = {
     return false;
   },
   arrayResultados: () => {
-    for (let x of this.listaEstudantes) {
-        console.log(x)
+/*     for (let [nome, notas] of this.listaEstudantes) {
+        console.log(x) */
     }
   },
 };
 
 // Teste Adicionar Aluno
 //console.log(curso.listaEstudantes);
-curso.adicionarAluno('Novo Aluno',3,[8,4,10]);
+// curso.adicionarAluno('Novo Aluno',3,[8,4,10]);
 //console.log(curso.listaEstudantes);
 
 // Teste Aprovação
@@ -41,4 +41,4 @@ curso.adicionarAluno('Novo Aluno',3,[8,4,10]);
  */
 
 /* Teste arrayResultados */
-console.log(curso.arrayResultados());
+// console.log(curso.arrayResultados());

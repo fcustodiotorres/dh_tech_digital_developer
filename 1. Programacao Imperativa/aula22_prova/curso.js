@@ -36,7 +36,7 @@ let curso = {
 };
 // Teste Adicionar Aluno
 //console.log(curso.listaEstudantes);
-// curso.adicionarAluno('Novo Aluno',3,[8,4,10]);
+curso.adicionarAluno('Novo Aluno',3,[8,4,10]);
 //console.log(curso.listaEstudantes);
 
 // Teste Aprovação

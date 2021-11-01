@@ -1,0 +1,1 @@
+Hardware é a parte física do computador, ou seja, o conjunto de aparatos eletrônicos, peças e equipamentos que fazem o computador funcionar. Diferentemente do hardware, o software é a parte lógica do computador.

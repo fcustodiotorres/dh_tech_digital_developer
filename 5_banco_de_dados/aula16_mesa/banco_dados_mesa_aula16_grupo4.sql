@@ -1,0 +1,103 @@
+/* Mesa de Trabalho
+Grupo 04
+-- Andrea Matsunaga
+-- Davi Muller
+-- Evandro Mariano
+-- Fabiana Yumi
+-- Filipe Campos
+-- Filipe Custódio
+*/
+
+USE EMARKET;
+-- ----------------------
+-- ------Parte I---------
+-- ----------------------
+SELECT 
+FAT.FATURAID AS FATURA_ID,
+date_format(fat.DATAFATURA, '%Y/%m/%d') AS DATA_FATURA,
+COR.EMPRESA AS TRANSPORTADORA,
+CLI.EMPRESA AS NOME_CLIENTE,
+CATEG.CATEGORIANOME AS CATEGORIA,
+PRO.PRODUTONOME AS PRODUTO,
+DF.PRECOUNITARIO AS PRECO_UNITARIO,
+DF.QUANTIDADE AS QUANTIDADE
+
+FROM FATURAS FAT
+INNER JOIN CLIENTES CLI ON CLI.CLIENTEID = FAT.CLIENTEID
+INNER JOIN DETALHEFATURA DF ON DF.FATURAID = FAT.FATURAID
+INNER JOIN PRODUTOS PRO ON PRO.PRODUTOID = DF.PRODUTOID
+INNER JOIN CATEGORIAS CATEG ON CATEG.CATEGORIAID = PRO.CATEGORIAID
+INNER JOIN CORREIOS COR ON COR.CORREIOID = FORMAENVIO;
+
+
+-- ----------------------
+-- ------Parte II--------
+-- ----------------------
+
+-- 1) Liste todas as categorias junto com informações sobre seus produtos. Incluir todas as categorias, mesmo que não tenham produtos.
+SELECT 
+CAT.CATEGORIAID AS CATEGORIA_ID,
+CAT.CATEGORIANOME AS CATEGORIA_NOME,
+CAT.DESCRICAO AS CATEGORIA_DESCRICAO,
+PROD.PRODUTONOME
+
+FROM CATEGORIAS CAT
+LEFT JOIN PRODUTOS PROD ON PROD.PRODUTOID = CAT.CATEGORIAID = PROD.CATEGORIAID;
+
+-- 2) Liste as informações de contato de clientes que nunca compraram no emarket.
+SELECT 
+CLI.EMPRESA,
+CLI.CONTATO,
+FAT.FATURAID
+FROM CLIENTES CLI
+LEFT JOIN FATURAS FAT ON FAT.CLIENTEID = CLI.CLIENTEID
+WHERE FAT.FATURAID IS NULL;
+
+-- 03) Faça uma lista de produtos. Para cada um, indique seu nome, categoria e as informações de contato de seu fornecedor. Lembre-se que podem existir produtos para os quais o fornecedor não foi indicado.
+SELECT
+PROD.PRODUTONOME AS PRODUTO,
+CAT.CATEGORIANOME AS CATEGORIA,
+FORN.EMPRESA AS FORNECEDOR,
+FORN.CONTATO AS FORNECEDOR_CONTATO,
+FORN.TELEFONE AS FORNECEDOR_TELEFONE
+
+FROM PRODUTOS PROD
+LEFT JOIN CATEGORIAS CAT ON CAT.CATEGORIAID = PROD.CATEGORIAID
+LEFT JOIN PROVEDORES FORN ON FORN.PROVEDORID = PROD.PROVEDORID;
+
+-- 04) Para cada categoria, liste o preço unitário médio de seus produtos.
+SELECT
+CAT.CATEGORIANOME AS CATEGORIA,
+PROD.PRODUTONOME,
+AVG(PROD.PRECOUNITARIO) AS PRECO_MEDIO
+
+FROM CATEGORIAS CAT
+INNER JOIN PRODUTOS PROD ON PROD.CATEGORIAID = CAT.CATEGORIAID 
+
+GROUP BY 1,2
+ORDER BY 3;
+
+-- 05) Para cada cliente, indique a última nota fiscal de compra. Inclua clientes que nunca compraram no e-market.
+SELECT
+EMPRESA AS CLIENTE,
+MAX(FAT.FATURAID)
+
+FROM CLIENTES CLI
+LEFT JOIN FATURAS FAT ON FAT.CLIENTEID = CLI.CLIENTEID
+
+GROUP BY 1
+ORDER BY 2 DESC;
+
+/*
+Todas as faturas têm uma empresa de correio associada (envio). Gere uma lista com todas as empresas de correio e o número de faturas correspondentes. Execute a consulta usando RIGHT JOIN.
+*/
+SELECT
+COR.CORREIOID AS TRANSPORTADORA_ID,
+COR.EMPRESA AS TRANSPORTADORA_NOME,
+FAT.FATURAID,
+DATE_FORMAT(FAT.DATAFATURA, '%Y/%m/%d') AS DATA_FATURA
+
+FROM CORREIOS COR
+RIGHT JOIN FATURAS FAT ON FAT.FORMAENVIO = COR.CORREIOID
+
+ORDER BY 1

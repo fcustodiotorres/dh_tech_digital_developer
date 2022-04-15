@@ -1,8 +1,8 @@
 // Referências do HTML
 const usernameReference = document.querySelector("#username");
 const closeAppReference = document.querySelector("#closeApp");
-
 const skeletonReference = document.querySelector("#skeleton");
+
 const taskPendingReference = document.querySelector(".tarefas-pendentes");
 const taskCompletedReference = document.querySelector(".tarefas-terminadas");
 const submitButtonReference = document.querySelector("#submit");
@@ -74,9 +74,9 @@ function getUserTasks() {
             <div class='meta'>
               <p class="timestamp">Criada em: ${taskDate}</p>
               <div class='task-options'>
-              <img src='https://img.icons8.com/fluency/344/checkmark.png' class='icon' onclick='updateTask(${task.id}, completed = true)'>
+              <img src='https://img.icons8.com/fluency/344/checkmark.png' class='icon' onclick='updateTask(${task.id}, completed = "true")'>
               <img src='https://img.icons8.com/color/344/delete-forever.png' class='icon' onclick='deleteTask(${task.id})'>
-              <img src='https://img.icons8.com/office/344/edit.png' class='icon' onclick=''>
+              <img src='https://img.icons8.com/office/344/edit.png' class='icon' onclick='editTask(${task.id}, completed = "false")'>
               </div>
             </div>
             
@@ -133,25 +133,22 @@ async function postNewTask() {
       body: JSON.stringify(bodyConfiguration),
     };
 
-    let fetchNewTask = await fetch(
-      "https://ctd-todo-api.herokuapp.com/v1/tasks",
-      requestConfiguration
-    );
-    fetchNewTask
+    fetch("https://ctd-todo-api.herokuapp.com/v1/tasks", requestConfiguration)
       .then((response) => {
         return response.json();
       })
       .then((data) => {
         console.log(data);
+        window.location.reload();
       });
   }
-
   getUserTasks();
 }
 // UPDATE Task
-async function updateTask(id, completed = "true") {
+async function updateTask(id, completed = "true", description) {
   let bodyConfiguration = {
     completed: completed,
+    description: description,
   };
   let requestConfiguration = {
     method: "PUT",
@@ -183,6 +180,12 @@ async function deleteTask(id) {
     requestConfiguration
   );
   window.location.reload();
+}
+
+// Edit Task
+async function editTask(id, completed, description){
+  let newDescription = window.prompt('Insira a nova descrição')
+  updateTask(id, completed = "false", description = newDescription)
 }
 
 submitButtonReference.addEventListener("click", (e) => {

@@ -28,8 +28,8 @@ a {
 }
 
 .user-info .user-image {
-  height: 2em;
-  width: 2em;
+  height: 36px;
+  width: 36px;
   border-radius: 50%;
   background-color: white;
   opacity: .4;
@@ -247,4 +247,13 @@ a {
 .task-id{
   color: rgb(134, 134, 134);
   font-size: 0.9rem;
+}
+
+.icon{
+  max-height: 30px;
+  /* margin: 0 10px; */
+}
+
+.icon:hover{
+ transform: scale(1.06) ;
 }

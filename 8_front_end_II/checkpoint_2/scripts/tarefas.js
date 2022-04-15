@@ -4,7 +4,7 @@ const closeAppReference = document.querySelector("#closeApp");
 
 const skeletonReference = document.querySelector("#skeleton");
 const taskPendingReference = document.querySelector(".tarefas-pendentes");
-const taskCompletedReference = document.querySelector(".titulo-terminadas");
+const taskCompletedReference = document.querySelector(".tarefas-terminadas");
 const submitButtonReference = document.querySelector("#submit");
 const newTaskTextReference = document.querySelector("#novaTarea");
 
@@ -13,10 +13,10 @@ let jwtAuth = window.localStorage.getItem("jwt");
 
 // Security Validator
 document.addEventListener("DOMContentLoaded", () => {
-  if(jwtAuth === '' || jwtAuth === null){
-    window.alert('Por favor, efetue o login!');
-    window.location.href = './index.html'
-    console.log("Sem jwt")
+  if (jwtAuth === "" || jwtAuth === null) {
+    window.alert("Por favor, efetue o login!");
+    window.location.href = "./index.html";
+    console.log("Sem jwt");
   }
 });
 
@@ -56,8 +56,8 @@ function getUserTasks() {
     requestConfiguration
   ).then((response) => {
     response.json().then((data) => {
-      console.log(data);
-      skeletonReference.remove();
+      skeletonReference.innerHTML = "";
+      skeletonReference.style.display = "none";
 
       data.forEach((task) => {
         let taskDate = new Intl.DateTimeFormat("pt-BR", {
@@ -65,22 +65,48 @@ function getUserTasks() {
           timeStyle: "short",
         }).format(new Date(task.createdAt));
 
-        if (task.taskCompleted) {
-          taskCompletedReference.innerHTML += "taskElement";
-        } else {
-          taskPendingReference.innerHTML += `
+        let taskPattern = {
+          pending: `
         <li class="tarefa">
-          <div class="not-done"></div>
+          <div class="not-done" onclick='updateTask(${task.id}, completed = true)'></div>
+            <div class="descricao">
+            <p class="nome">${task.description}</p>
+            <div class='meta'>
+              <p class="timestamp">Criada em: ${taskDate}</p>
+              <div class='task-options'>
+              <img src='https://img.icons8.com/fluency/344/checkmark.png' class='icon' onclick='updateTask(${task.id}, completed = true)'>
+              <img src='https://img.icons8.com/color/344/delete-forever.png' class='icon' onclick='deleteTask(${task.id})'>
+              <img src='https://img.icons8.com/office/344/edit.png' class='icon' onclick=''>
+              </div>
+            </div>
+            
+          </div>
+          
+        </li>`,
+
+          completed: `
+        <li class="tarefa">
+          <div class="not-done" onclick='updateTask(${task.id}, completed = false)'></div>
           <div class="descricao">
           <p class="nome">${task.description}</p>
-          <div>
+          <div class='meta'>
             <p class="task-id">Id: ${task.id}</p>
             <p class="timestamp">Criada em: ${taskDate}</p>
+            <div class='task-options'>
+              <img src='https://img.icons8.com/plasticine/344/return.png' class='icon' onclick='updateTask(${task.id}, completed = false)'>
+              <img src='https://img.icons8.com/color/344/delete-forever.png' class='icon' onclick='deleteTask(${task.id})'>
+              </div>
           </div>
           </div>
-        </li>
-        
-        `;
+          <div class='task-options'>
+          </div>
+        </li>`,
+        };
+
+        if (task.completed) {
+          taskCompletedReference.innerHTML += taskPattern.completed;
+        } else {
+          taskPendingReference.innerHTML += taskPattern.pending;
         }
       });
     });
@@ -88,8 +114,7 @@ function getUserTasks() {
 }
 
 // POST New Task
-function postNewTask() {
-  // debugger
+async function postNewTask() {
   let newTask = newTaskTextReference.value;
 
   if (newTask === "") {
@@ -108,7 +133,11 @@ function postNewTask() {
       body: JSON.stringify(bodyConfiguration),
     };
 
-    fetch("https://ctd-todo-api.herokuapp.com/v1/tasks", requestConfiguration)
+    let fetchNewTask = await fetch(
+      "https://ctd-todo-api.herokuapp.com/v1/tasks",
+      requestConfiguration
+    );
+    fetchNewTask
       .then((response) => {
         return response.json();
       })
@@ -119,41 +148,50 @@ function postNewTask() {
 
   getUserTasks();
 }
-
-// GET Task ID
-function getTaskIdONClick() {
-  debugger;
-  const taskList = document.querySelectorAll("li");
-  console.log(taskList);
-}
-
 // UPDATE Task
-function updateTask() {}
-
-submitButtonReference.addEventListener("click", postNewTask);
-// Update Task
-/* function updateTask() {
-
+async function updateTask(id, completed = "true") {
   let bodyConfiguration = {
-    description: 'Atualizando Tarefa!',
-    completed: true
-  }
+    completed: completed,
+  };
   let requestConfiguration = {
-    method: 'PUT',
+    method: "PUT",
     headers: {
       "Content-Type": "application/json",
-      authorization: jwtAuth
+      Authorization: jwtAuth,
     },
-    body: JSON.stringify(bodyConfiguration)
-  }
-  fetch('https://ctd-todo-api.herokuapp.com/v1/5241', requestConfiguration)
+    body: JSON.stringify(bodyConfiguration),
+  };
+  await fetch(
+    `https://ctd-todo-api.herokuapp.com/v1/tasks/${id}`,
+    requestConfiguration
+  );
 
+  window.location.reload();
 }
-updateTask() */
+
+// Delete Task
+async function deleteTask(id) {
+  let requestConfiguration = {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: jwtAuth,
+    },
+  };
+  await fetch(
+    `https://ctd-todo-api.herokuapp.com/v1/tasks/${id}`,
+    requestConfiguration
+  );
+  window.location.reload();
+}
+
+submitButtonReference.addEventListener("click", (e) => {
+  e.preventDefault();
+  postNewTask();
+});
 
 getUserInformation();
 getUserTasks();
-// postNewTask();
 
 // Finalizar Sessão
 closeAppReference.addEventListener("click", () => {

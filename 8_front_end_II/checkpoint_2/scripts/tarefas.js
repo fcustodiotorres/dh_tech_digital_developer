@@ -1,3 +1,5 @@
+// Imports
+
 // Referências do HTML
 const usernameReference = document.querySelector("#username");
 const closeAppReference = document.querySelector("#closeApp");
@@ -58,6 +60,8 @@ function getUserTasks() {
     response.json().then((data) => {
       skeletonReference.innerHTML = "";
       skeletonReference.style.display = "none";
+      taskPendingReference.innerHTML = "";
+      taskCompletedReference.innerHTML = "";
 
       data.forEach((task) => {
         let taskDate = new Intl.DateTimeFormat("pt-BR", {
@@ -183,9 +187,9 @@ async function deleteTask(id) {
 }
 
 // Edit Task
-async function editTask(id, completed, description){
-  let newDescription = window.prompt('Insira a nova descrição')
-  updateTask(id, completed = "false", description = newDescription)
+async function editTask(id, completed, description) {
+  let newDescription = window.prompt("Insira a nova descrição");
+  updateTask(id, (completed = "false"), (description = newDescription));
 }
 
 submitButtonReference.addEventListener("click", (e) => {
@@ -201,3 +205,12 @@ closeAppReference.addEventListener("click", () => {
   window.localStorage.removeItem("jwt");
   window.location.href = "./index.html";
 });
+
+function test() {
+  Swal.fire({
+    title: "Error!",
+    text: "Do you want to continue",
+    icon: "error",
+    confirmButtonText: "Cool",
+  });
+}
